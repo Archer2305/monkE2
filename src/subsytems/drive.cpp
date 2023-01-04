@@ -33,13 +33,15 @@ MotorGroup rightDrive({rightFront,rightTop,rightBottom});
       pros::lcd::set_text(1, std::to_string(drive->getState().x.convert(okapi::foot)));
        pros::lcd::set_text(2, std::to_string(drive->getState().y.convert(okapi::foot)));
     // drive -> getModel() -> tank(-translate1.power, -translate1.power);
-    drive -> getModel() -> tank(controller.getAnalog(ControllerAnalog::rightY), controller.getAnalog(ControllerAnalog::leftY));
-    if (controller.getDigital(ControllerDigital::L1) == 1){
+    
+    drive -> getModel() -> arcade(controller.getAnalog(ControllerAnalog::leftY), -controller.getAnalog((ControllerAnalog::leftX)));
+    if (controller.getDigital(ControllerDigital::X) == 1){
       leftDrive.setBrakeMode(AbstractMotor::brakeMode::hold);
       rightDrive.setBrakeMode(AbstractMotor::brakeMode::hold);
     }
-    else if (controller.getDigital(ControllerDigital::L1) == 1){
+    else if (controller.getDigital(ControllerDigital::Y) == 1){
       leftDrive.setBrakeMode(AbstractMotor::brakeMode::coast);
       rightDrive.setBrakeMode(AbstractMotor::brakeMode::coast);
     }
+    
   }
