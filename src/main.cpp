@@ -50,7 +50,7 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	updateAuton();
+	// updateAuton();
 }
 
 /**
@@ -70,7 +70,7 @@ void opcontrol() {
 		while (true){
 	okapi::Rate rate;
 // start();
-stop();
+// stop();
 updateExpantion();
 updateDrive();
 updateShooter();
